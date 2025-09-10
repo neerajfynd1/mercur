@@ -1,12 +1,12 @@
 {
   "build": {
     "builder": "DOCKERFILE",
-    "dockerfilePath": "./Dockerfile"
+    "dockerfilePath": "./Dockerfile",
+    "useNixpacks": false
   },
   "deploy": {
     "startCommand": "yarn start",
     "healthcheckPath": "/health",
     "restartPolicy": "ON_FAILURE"
-  },
-  "source": "./apps/backend"
+  }
 }
