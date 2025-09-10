@@ -6,7 +6,7 @@
   },
   "deploy": {
     "startCommand": "sh -c 'cd /app/apps/backend && yarn db:migrate && yarn start'",
-    "healthcheckPath": "/health",
+    "healthcheckPath": "/store",
     "restartPolicy": "ON_FAILURE"
   },
   "environments": {
