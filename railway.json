@@ -8,5 +8,24 @@
     "startCommand": "cd /app/apps/backend && yarn db:migrate && yarn start",
     "healthcheckPath": "/health",
     "restartPolicy": "ON_FAILURE"
+  },
+  "environments": {
+    "production": {
+      "variables": {
+        "DATABASE_URL": "postgresql://postgres:IQchuqTamVFIcQLEMIQgUHraivGKZukL@hopper.proxy.rlwy.net:25593/mercurjs",
+        "REDIS_URL": "redis://default:kitJyuDMZwgShymynROPzrbLceQEuJKu@crossover.proxy.rlwy.net:31706",
+        "NODE_ENV": "production",
+        "JWT_SECRET": "supersecret",
+        "COOKIE_SECRET": "supersecret",
+        "STORE_CORS": "*",
+        "ADMIN_CORS": "*",
+        "VENDOR_CORS": "*",
+        "AUTH_CORS": "*",
+        "RESEND_API_KEY": "re_efQ1yQ5M_DNNtT3G3tkL3qNQmdm82aUC9",
+        "RESEND_FROM_EMAIL": "t@emails.ochrsslifestyle.com",
+        "ALGOLIA_APP_ID": "E5ZOUF5WIW",
+        "ALGOLIA_API_KEY": "31bb0fefac37278d196a3a904909a61d"
+      }
+    }
   }
 }
