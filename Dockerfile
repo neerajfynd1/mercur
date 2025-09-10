@@ -51,6 +51,7 @@ COPY --from=installer /app .
 
 WORKDIR /app/apps/backend
 
-RUN yarn db:migrate
+# Skip database migration during build - Railway handles this better at runtime
+# RUN yarn db:migrate
 
 CMD ["yarn", "start"]
