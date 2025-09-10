@@ -1,0 +1,12 @@
+{
+  "build": {
+    "builder": "DOCKERFILE",
+    "dockerfilePath": "./Dockerfile"
+  },
+  "deploy": {
+    "startCommand": "yarn start",
+    "healthcheckPath": "/health",
+    "restartPolicy": "ON_FAILURE"
+  },
+  "source": "./apps/backend"
+}

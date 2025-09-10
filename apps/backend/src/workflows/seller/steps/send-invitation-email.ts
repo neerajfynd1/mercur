@@ -14,6 +14,7 @@ export const sendSellerInvitationEmailStep = createStep(
   'send-seller-invitation-email',
   async (input: CreateSellerInvitationDTO, { container }) => {
     const service = container.resolve(Modules.NOTIFICATION)
+    console.log('service', service);
     const logger = container.resolve(ContainerRegistrationKeys.LOGGER)
 
     try {
@@ -30,6 +31,7 @@ export const sendSellerInvitationEmailStep = createStep(
           }
         }
       })
+      console.log('notification', notification);
 
       return new StepResponse(notification)
     } catch (e) {

@@ -1,0 +1,64 @@
+Based on my analysis of the project structure, configuration files, and documentation, here's how this Medusa.js 2.0 project is deployed on Railway:
+
+## Railway Deployment Architecture
+
+### **One-Click Template Deployment**
+This project has a Railway template (https://railway.app/template/gkU-27) that enables one-click deployment. It automatically provisions and configures all necessary services:
+
+- **PostgreSQL database** - automatically created and configured
+- **Redis** - for caching, workflows, and session management  
+- **MinIO** - for file storage with automatic 'medusa-media' bucket creation
+- **MeiliSearch** - for product search functionality
+
+### **Monorepo Structure**
+The project is a monorepo with two main components:
+
+```
+/
+├── backend/          # Medusa 2.0 backend (Node.js/TypeScript)
+└── storefront/       # Next.js 14 storefront (React/TypeScript)
+```
+
+### **Service Dependencies & Startup Sequence**
+
+**1. Backend Service:**
+- Uses `medusajs-launch-utils` for deployment coordination
+- Startup script: `npm run start` → `init-backend && cd .medusa/server && medusa start`
+- Automatically runs migrations and seeds data on first deployment
+- Builds and post-processes with `npm run build`
+
+**2. Storefront Service:**
+- Also uses `medusajs-launch-utils` for startup coordination
+- Startup scripts:
+  - `dev`: Waits for backend → starts in dev mode
+  - `build`: Waits for backend → builds application  
+  - `start`: Launches production storefront
+- Waits for backend availability at `/key-exchange` endpoint
+
+### **Pre-Configured Integrations**
+
+The Railway template automatically configures:
+
+1. **File Storage**: MinIO with fallback to local storage
+2. **Email**: Resend integration with React Email templates
+3. **Payments**: Stripe integration
+4. **Search**: MeiliSearch with automatic configuration
+5. **Database**: PostgreSQL with automatic migrations
+
+### **Environment Variables**
+Railway automatically provides:
+- `DATABASE_URL` (PostgreSQL connection)
+- `REDIS_URL` (Redis connection)
+- Various MinIO endpoints and credentials
+- MeiliSearch configuration
+
+### **Build Commands**
+- **Backend**: `npm run build && npm run start`
+- **Storefront**: `npm run build && npm run start`
+
+### **Production URLs**
+From the logs, deployed services have URLs like:
+- Backend: `backend-production-a506.up.railway.app`
+- Storefront would have a similar Railway subdomain
+
+The deployment is designed to be completely automated - Railway handles all infrastructure provisioning while the application scripts ensure proper startup sequencing between backend and storefront services.
