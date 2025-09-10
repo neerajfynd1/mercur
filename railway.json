@@ -5,7 +5,7 @@
     "useNixpacks": false
   },
   "deploy": {
-    "startCommand": "cd /app/apps/backend && yarn db:migrate && yarn start",
+    "startCommand": "sh -c 'cd /app/apps/backend && yarn db:migrate && yarn start'",
     "healthcheckPath": "/health",
     "restartPolicy": "ON_FAILURE"
   },
