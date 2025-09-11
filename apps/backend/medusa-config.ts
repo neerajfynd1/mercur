@@ -12,7 +12,12 @@ module.exports = defineConfig({
       vendorCors: process.env.VENDOR_CORS!,
       authCors: process.env.AUTH_CORS!,
       jwtSecret: process.env.JWT_SECRET || 'supersecret',
-      cookieSecret: process.env.COOKIE_SECRET || 'supersecret'
+      cookieSecret: process.env.COOKIE_SECRET || 'supersecret',
+      port: process.env.PORT || 8080
+    },
+    admin: {
+      disable: false,
+      serve: true
     }
   },
   modules: [
