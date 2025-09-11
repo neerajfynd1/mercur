@@ -44,6 +44,8 @@ RUN adduser --system --uid 1001 medusa
 
 # Ensure the medusa user owns the backend folder
 RUN mkdir -p /app/apps/backend/static
+# Pre-create .medusa directory with correct ownership to avoid permission errors
+RUN mkdir -p /app/apps/backend/.medusa
 RUN chown -R medusa:medusa /app/apps/backend
 
 USER medusa
