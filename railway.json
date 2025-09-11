@@ -5,7 +5,7 @@
     "useNixpacks": false
   },
   "deploy": {
-    "startCommand": "yarn dev",
+    "startCommand": "yarn start",
     "restartPolicy": "ON_FAILURE"
   },
   "environments": {
