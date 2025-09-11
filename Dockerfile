@@ -50,6 +50,8 @@ RUN chown -R medusa:medusa /app/apps/backend
 
 USER medusa
 COPY --from=installer /app .
+# Debug: Check what user we are and directory permissions
+RUN id && ls -la /app/apps/backend/.medusa/client/ 2>/dev/null || echo ".medusa/client not found"
 
 WORKDIR /app/apps/backend
 
