@@ -11,7 +11,7 @@
   "environments": {
     "production": {
       "variables": {
-        "DATABASE_URL": "postgresql://postgres:IQchuqTamVFIcQLEMIQgUHraivGKZukL@hopper.proxy.rlwy.net:25593/mercurjs",
+        "DATABASE_URL": "postgresql://postgres:IQchuqTamVFIcQLEMIQgUHraivGKZukL@hopper.proxy.rlwy.net:25593/mercurjs1",
         "REDIS_URL": "redis://default:kitJyuDMZwgShymynROPzrbLceQEuJKu@crossover.proxy.rlwy.net:31706",
         "NODE_ENV": "production",
         "JWT_SECRET": "supersecret",
